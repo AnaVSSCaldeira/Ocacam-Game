@@ -5,9 +5,11 @@ using UnityEngine;
 public class BulletMove : MonoBehaviour
 {
     public float veloc = 10f;
+    public Animator anim;
 
     void FixedUpdate()
     {
+        // anim.SetBool("Alive",true);
         transform.Translate(new Vector2(veloc * Time.deltaTime,0));
     }
 
@@ -15,7 +17,11 @@ public class BulletMove : MonoBehaviour
     {
         if(other.CompareTag("Wall") || other.CompareTag("Enemy")) 
         {
-            Destroy(gameObject);
+            veloc = 0;
+            anim.SetBool("Alive",false);
+            // anim.alive = false;
+            // anim.Play("Explosion");
+            Destroy(gameObject, 0.2f);
         }
     }
 }

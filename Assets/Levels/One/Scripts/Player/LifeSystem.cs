@@ -9,6 +9,10 @@ public class LifeSystem : MonoBehaviour
     public Image life_content;
     public float life = 10f;
 
+    public SpriteRenderer sprite;
+
+    public bool recovery;
+
     void Start()
     {
         life = life/10;
@@ -16,25 +20,40 @@ public class LifeSystem : MonoBehaviour
 
     void Update()
     {
-        // if(life > 0)
-        // {
-        //     PlayerLifeControl();
-        // }
+
     }
 
     void DamageTaked(float damage)
     {
         if(life > 0)
             {
-                life -= damage;
+                if(recovery == false)
+                {
+                    life -= damage;
+                    StartCoroutine(Flick());
+                }
             }
-            else
+        else
             {
+                life = 0;
                 Destroy(gameObject);
-                // SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
             }
             life_content.fillAmount = life; 
     }
+
+    IEnumerator Flick()
+    {
+        recovery = true;
+        for (int i = 0; i < 3; i++) 
+        {
+            sprite.color = new Color(1,1,1,0);
+            yield return new WaitForSeconds(0.2f);
+            sprite.color = new Color(1,1,1,1);
+            yield return new WaitForSeconds(0.2f);
+        }
+        recovery = false;
+    }
+
 
     void OnTriggerEnter2D(Collider2D another_object) 
     {
