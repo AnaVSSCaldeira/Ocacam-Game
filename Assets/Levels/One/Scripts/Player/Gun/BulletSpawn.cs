@@ -11,6 +11,9 @@ public class BulletSpawn : MonoBehaviour
     public TextMeshProUGUI txt_ammo;
     public GameObject reload_feedback;
     
+    public AudioSource audio_source_shoot;
+    public AudioClip sound_effect_shoot;
+
     public int ammo = 5;
     public bool can_shot = true;
     public bool reload = true; 
@@ -27,7 +30,7 @@ public class BulletSpawn : MonoBehaviour
         {
             can_shot = false;
         }
-        if(can_shot == true && Input.GetMouseButtonDown(0))
+        if(can_shot == true && Input.GetMouseButtonDown(0) && Time.timeScale == 1)
         {
             Fire();
         }
@@ -44,6 +47,8 @@ public class BulletSpawn : MonoBehaviour
             can_shot = false;
             return;
         }
+        // TOCAR SOM AQUI
+        audio_source_shoot.PlayOneShot(sound_effect_shoot);
         ammo --;
         Instantiate(bullet, new Vector3(bullet_spawn.transform.position.x, bullet_spawn.transform.position.y, bullet_spawn.transform.position.z), bullet_spawn.transform.rotation);
         txt_ammo.text=ammo.ToString();

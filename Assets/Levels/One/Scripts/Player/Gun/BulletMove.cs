@@ -9,7 +9,7 @@ public class BulletMove : MonoBehaviour
 
     void FixedUpdate()
     {
-        // anim.SetBool("Alive",true);
+        
         transform.Translate(new Vector2(veloc * Time.deltaTime,0));
     }
 
@@ -17,10 +17,9 @@ public class BulletMove : MonoBehaviour
     {
         if(other.CompareTag("Wall") || other.CompareTag("Enemy")) 
         {
+            // audio_source_damage.PlayOneShot(sound_effect_damage);
             veloc = 0;
             anim.SetBool("Alive",false);
-            // anim.alive = false;
-            // anim.Play("Explosion");
             Destroy(gameObject, 0.2f);
         }
     }

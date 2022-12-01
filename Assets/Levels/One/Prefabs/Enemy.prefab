@@ -149,6 +149,7 @@ MonoBehaviour:
   player: {fileID: 4001831840581227666, guid: 3075be4bfe8317849a5f107e34502f91, type: 3}
   heart: {fileID: 5158535970430961844, guid: 44a893ba7b2395b4181c1b1546c03d4f, type: 3}
   life: {fileID: 4001831840581227673, guid: 3075be4bfe8317849a5f107e34502f91, type: 3}
+  EM: {fileID: 8754054352477308803}
 --- !u!114 &8754054352477308803
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -161,7 +162,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c47cc0db223daf74da04a583ba88d71a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  player: {fileID: 4001831840581227666, guid: 3075be4bfe8317849a5f107e34502f91, type: 3}
   speed: 4
 --- !u!95 &1943941882
 Animator:

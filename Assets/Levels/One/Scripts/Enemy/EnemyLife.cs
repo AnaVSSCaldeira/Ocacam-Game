@@ -10,19 +10,8 @@ public class EnemyLife : MonoBehaviour
     public GameObject player;
     public GameObject heart;
     public LifeSystem life;
+    public EnemyMovement EM;
     System.Random rd = new System.Random();
-    // public TextMeshProUGUI txt_enemy_quantity;
-    // public int enemyCount = 0;
-
-    void Start()
-    {
-        // if(player != null)
-        // {
-            // player = GameObject.FindGameObjectWithTag("Player");
-            // life = player.GetComponent<LifeSystem>();
-            // print("ALO?");
-        // }
-    }
 
     void Update()
     {
@@ -41,6 +30,7 @@ public class EnemyLife : MonoBehaviour
                     Instantiate(heart, new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z), this.transform.rotation);
                 }
                 PointsSystem.instance.points_number += 5;
+                EM.speed = 0;
                 Destroy(gameObject);
             }
         }
